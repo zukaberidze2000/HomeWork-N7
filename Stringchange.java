@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Stringchange
+public class StringChange
 {
     static void modifyFile(String filePath, String oldString, String newString) {
         File file = new File(filePath);
@@ -14,17 +14,14 @@ public class Stringchange
 
         try {
             reader = new BufferedReader(new FileReader(file));
-            //Reading all the lines of input text file into oldContent
             String line = reader.readLine();
 
             while (line != null) {
                 oldContent = oldContent + line + System.lineSeparator();
                 line = reader.readLine();
             }
-
-            //Replacing oldString with newString in the oldContent
-            String newContent = oldContent.replaceAll(oldString, newString);
-            //Rewriting the input text file with newContent
+         
+            String newContent = oldContent.replaceAll(oldString, newString);         
             writer = new FileWriter(file);
             writer.write(newContent);
         }
@@ -32,8 +29,7 @@ public class Stringchange
             e.printStackTrace();
         }
         finally {
-            try {
-                //Closing the resources
+            try {                
                 reader.close();
                 writer.close();
             }
